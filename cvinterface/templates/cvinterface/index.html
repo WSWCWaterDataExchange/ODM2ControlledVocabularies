@@ -1,0 +1,88 @@
+{% extends 'cvinterface/base.html' %}
+{% load static %}
+
+{% block body %}
+    <section class="introduction">
+        <header>
+            <h2 align="center">Master Controlled Vocabularies Registry for the<br>Water Data Exchange(WaDE)</h2>
+        </header>
+
+        <div class="column three-columns">
+            <p>
+            This online moderated registry aims to promote consistent use of terminology (i.e., Controlled Vocabularies) to describe attributes of the Water Data Exchange(WaDE) project across the seventeen Western US States while they still retain the use of their native terms. The use of these controlled vocabularies allow interoperable data query across states and regional analysis. Click at the tables below to view their vocabularies. You may suggest edits to the existing vocabularies or suggest new ones to be added. Scroll to the bottom for more info on how to the registry works.
+            <br>
+            <br>
+            Click on a collection of terms, then click New in the top left to suggest a new term. Once submitted, we will receive an email of the submission and decide to accept and add as a new vocabulary, or reject it in case it is similar to an existing one. Scroll to the bottom for more info on how to the registry works.          
+            </p><br>
+            <div id="moderators">
+                <div class="moderator">
+                    <span class="data">Sara Larsen, Water Data Exchange Senior Program Manager</span>
+                    <span class="data secondary">Western States Water Council</span>
+                    <span class="data secondary">saralarsen {@} wswc.utah.gov</span>
+                    
+                    <span class="data">Adel Abdallah, Senior Hydroinformatics Specialist</span>
+                    <span class="data secondary">Western States Water Council</span>
+                    <span class="data secondary">adelabdallah {@} wswc.utah.gov</span>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </section>
+
+    <section class="list">
+        <header>
+            <h2>Controlled Vocabularies</h2>
+        </header>
+        {% for vocabulary in vocabulary_views %}
+            <div class="list-item column three-columns">
+                <div class="list-title whole-spaced-title"><a href="{{ vocabulary.url }}"><h3>{{ vocabulary.name }}</h3></a></div>
+                <div class="list-description whole-spaced-description"><p>{{ vocabulary.definition }}</p></div>
+            </div>
+        {% endfor %}
+        <div class="clear"></div>
+    </section>
+    
+    <section class="conclusion">
+          <header>
+            <br>
+            <h2> How does it work to add new terms to the WaDE CVs? </h2>
+        </header>
+        <div class="column three-columns">
+           <p>
+In this registry, you may view and download existing controlled vocabularies for each table in WaDE or submit new terms to be added to the registry. Click on each vocabulary table below. The "Download" button will provide a CSV file of the entire vocabulary table. The "New" button allows you to submit a request to add a new term, after which you will receive a confirmation email. The registry moderator will approve or rejects the submitted term, and afterward, the term will become part of the registry and be available to the public.
+           </p><br>
+           <img src="{% static "images/how-it-works-1.png" %}" alt"add-new-terms" style="display: block; width: 100%;">
+        </div>
+        <div class="clear"></div>
+        </section>
+        <section class="conclusion">
+          <header>
+            <br>
+            <h2> How are the WaDE CVs being used? </h2>
+        </header>
+        <div class="column three-columns">
+           <p>
+The CV terms in this registry are used in the WaDE centralized cache database hosted on Azure. Water allocations and use data across the member states share these common vocabularies.            
+            </p><br>
+           <img src="{% static "images/how-it-works-2.png" %}" alt"add-new-terms" style="display: block; width: 100%;">
+        </div>
+        <div class="clear"></div>
+        </section>
+        <section class="conclusion">
+          <header>
+            <br>
+            <h2> Credit and source code </h2>
+        </header>
+        <div class="column three-columns">
+           <p>
+The design of this registry is adapted from the source code of the ODM2 ControlledVocabularies available on GitHub @ <a href="https://github.com/ODM2/ODM2ControlledVocabularies">github.com/ODM2/ODM2ControlledVocabularies</a>. Thanks to Dr. Jeff Horsburgh and the ODM2 team for promoting #OpenScience by publishing their source code. 
+           </p>
+           <p>
+The adapted source code is available on GitHub @ <a href="https://github.com/WSWCWaterDataExchange/WaDEControlledVocabulary">https://github.com/WSWCWaterDataExchange/WaDEControlledVocabulary</a>. The adapted source code include detailed instructions on the changes made to the original repository and how to deploy, access, and populate the repository.       </p>
+            <br>
+        </div>
+        <div class="clear"></div>
+        </section>
+
+{% endblock %}

@@ -1,36 +1,19 @@
-# ODM2ControlledVocabularies
-A Python/Django web application and REST API for managing the ODM2 Controlled Vocabularies. This system provides the benefits of both:
-1. Community moderation features, for anyone to suggest edits to exisiting terms or propose new terms; and
-2. SKOS RESTful web services API, for automated machine-to-machine fetching and updating of vocabulary terms.
+# WaDE Controlled Vocabularies
 
-This repository contains the source code for the master controlled vocabulary registry web application for the Observations Data Model 2 (ODM2).
+The source code for a Python/Django web application and REST API for managing the Water Data Exchange program (WaDE) Controlled Vocabularies. WaDE is part of the Western States Water Council programs.
+ 
 
-The production Controlled Vocabulary website for ODM2 (which uses this code) can be accessed at:
+The deployed online moderated registry at http://vocabulary.westernstateswater.org/ aims to promote consistent use of terminology (i.e., Controlled Vocabularies) to describe attributes of the Water Data Exchange(WaDE) project across the seventeen Western US States while they still retain the use of their native terms. The use of these controlled vocabularies allow interoperable data query across states and regional analysis. Click at the tables below to view their vocabularies. You may suggest edits to the existing vocabularies or suggest new ones to be added. Scroll to the bottom for more info on how to the registry works. 
 
-http://vocabulary.odm2.org
 
-### Accessing Vocabularies and Individual Terms
 
-Each individual vocabulary can be accessed through the web user interface. For example:
+### Licensing  
+WaDE and materials in this GitHub repository are disturbed under a BSD 3-Clause [LICENSE](/LICENSE). 
 
-http://vocabulary.odm2.org/actiontype/
 
-Every term has a unique URL:
+### Credit 
+The design of this registry is adapted from the source code of the ODM2 ControlledVocabularies available on GitHub @ github.com/ODM2/ODM2ControlledVocabularies. Thanks to Dr. Jeff Horsburgh and the ODM2 team for promoting #OpenScience by publishing their source code.
 
-http://vocabulary.odm2.org/sitetype/stream/
 
-Each vocabulary and term can also be accessed in Simple Knowledge Organization System (SKOS) format through a RESTful API.
-
-* For a vocabulary: http://vocabulary.odm2.org/api/v1/actiontype/?format=skos
-* For an individual term: http://vocabulary.odm2.org/api/v1/sitetype/stream/?format=skos
-
-Vocabularies can also be exported in comma separated values (CSV) format.
-
-### Modifying the Controlled Vocabularies
-
-This web application provides moderated submission of new vocabulary terms and edits to existing terms. You can simply click on the "New" button on a vocabulary page or the "Edit" button on the page for an individual term to submit changes.
-
-### Credits
-
-This work was supported by National Science Foundation Grants [EAR-1332257](http://www.nsf.gov/awardsearch/showAward?AWD_ID=1332257) and  [EAR-1224638](http://www.nsf.gov/awardsearch/showAward?AWD_ID=1224638). Any opinions, findings, and conclusions or recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of the National Science Foundation. 
+The adapted source code is available on GitHub @ https://github.com/WSWCWaterDataExchange/WaDEControlledVocabulary and includes detailed instructions on the changes made to the original repository and how to deploy, access, and populate the repository. The configuration and deployment of the original repository have been significantly changed to be much simplified and automated using Ansible and Docker. 
 
