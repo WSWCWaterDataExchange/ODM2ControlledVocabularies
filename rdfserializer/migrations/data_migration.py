@@ -97,11 +97,18 @@ def forwards(apps, schema_editor):
                uri='http://vocabulary.westernstateswater.org/aggregationstatistic'
                ),
         
+        scheme(name='coordinateMethod', title='WaDE coordinateMethod', creator='WaDE Working Group',
+               description='A term that indicates coordinate method used to report the longitude and latitude of a site',
+               uri='http://vocabulary.westernstateswater.org/coordinatemethod'
+               ),
+        
+        
         scheme(name='cropType', title='WaDE Elevation Datum Controlled Vocabulary', creator='WaDE Working Group',
                description='A term that indicates the Crop type for the place of use, if the VariableSpecificCV is SiteSpecificConsumptive Use,'
                            'Irrigation or SiteSpecificWithdrawal, Irrigation.',
                uri='http://vocabulary.westernstateswater.org/croptype'
-               ),
+               ),      
+        
         
         scheme(name='epsgCode', title='WaDE MethodType Controlled Vocabulary', creator='WADE Working Group',
                description='A term to indicate the European Petroleum Survey Group (EPSG) Code for projection, with a preference for WGS_1984, EPSG of 4326',    
@@ -172,6 +179,10 @@ def forwards(apps, schema_editor):
                uri='http://vocabulary.westernstateswater.org/sitetype'
                ), 
         
+        scheme(name='states', title='WaDE Text Controlled Value Controlled Vocabulary', creator='WaDE Working Group',
+               description='A term that describes the state',
+               uri='http://vocabulary.westernstateswater.org/state'
+               ),         
         
         scheme(name='units', title='WaDE units Controlled Value Controlled Vocabulary', creator='WaDE Working Group',
                description='A term that describes the unit of the amount',
@@ -202,9 +213,9 @@ def forwards(apps, schema_editor):
                description='A term to describe water quality fresh, saline, or mixed quality',
                uri='http://vocabulary.westernstateswater.org/waterqualityindicator'
                ), 
-       scheme(name='waterRighttype', title='WaDE Text Controlled Value Controlled Vocabulary', creator='WaDE Working Group',
+       scheme(name='waterAllocationtype', title='WaDE Text Controlled Value Controlled Vocabulary', creator='WaDE Working Group',
                description='A term that describes the water right type in each state such as Federal Reserved Water Right, Temporary Application, Water Company Shares',
-               uri='http://vocabulary.westernstateswater.org/waterrighttype'
+               uri='http://vocabulary.westernstateswater.org/waterallocationtype'
                ),     
     
        scheme(name='waterSourcetype', title='WaDE Text Controlled Value Controlled Vocabulary', creator='WaDE Working Group',

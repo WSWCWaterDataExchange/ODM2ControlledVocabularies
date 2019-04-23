@@ -9,9 +9,9 @@ from tastypie.utils.mime import build_content_type
 
 from rdfserializer.api import ModelRdfResource
 
-from models import AggregationStatistic, MethodType,CropType, EPSGCode, GNISFeatureName, IrrigationMethod, LegalStatus, NAICSCode, \
-     NHDNetworkStatus, NHDProduct, RegulatoryStatus, ReportYear, ReportingUnitType, ReportYearType, SiteType,\
-     Units,USGSCategory,Variable,VariableSpecific,WaterAllocationBasis,WaterQualityIndicator,WaterRightType,WaterSourceType	
+from models import AggregationStatistic, CoordinateMethod,MethodType,CropType, EPSGCode, GNISFeatureName, IrrigationMethod, LegalStatus, NAICSCode, \
+     NHDNetworkStatus, NHDProduct, RegulatoryStatus, ReportYear, ReportingUnitType, ReportYearType, SiteType,States,\
+     Units,USGSCategory,Variable,VariableSpecific,WaterAllocationBasis,WaterQualityIndicator,WaterAllocationType,WaterSourceType	
 
 
 class CSVSerializer(Serializer):
@@ -91,6 +91,15 @@ class AggregationStatisticResource(ModelRdfResource):
         queryset = AggregationStatistic.objects.filter(ModelRdfResource.vocabulary_filter)
         resource_name = 'aggregationstatistic'
 
+          
+class CoordinateMethodResource(ModelRdfResource):
+    scheme = 'coordinateMethod'
+
+    class Meta(ModelRdfResource.Meta):
+        queryset = CoordinateMethod.objects.filter(ModelRdfResource.vocabulary_filter)
+        resource_name = 'coordinatemethod'
+                  
+          
           
 class CropTypeResource(ModelRdfResource):
     scheme = 'cropType'
@@ -215,6 +224,15 @@ class SiteTypeResource(ModelRdfResource):
     class Meta(ModelRdfResource.Meta):
         queryset = SiteType.objects.filter(ModelRdfResource.vocabulary_filter)
         resource_name = 'sitetype'          
+
+
+class StatesResource(ModelRdfResource):
+    scheme = 'states'
+
+    class Meta(ModelRdfResource.Meta):
+        queryset = States.objects.filter(ModelRdfResource.vocabulary_filter)
+        resource_name = 'states'            
+          
           
           
 class UnitsResource(ModelRdfResource):
@@ -267,12 +285,12 @@ class WaterQualityIndicatorResource(ModelRdfResource):
         resource_name = 'waterqualityindicator'   
           
           
-class WaterRightTypeResource(ModelRdfResource):
-    scheme = 'waterRighttype'
+class WaterAllocationTypeResource(ModelRdfResource):
+    scheme = 'waterAllocationtype'
 
     class Meta(ModelRdfResource.Meta):
-        queryset = WaterRightType.objects.filter(ModelRdfResource.vocabulary_filter)
-        resource_name = 'waterrighttype'   
+        queryset = WaterAllocationType.objects.filter(ModelRdfResource.vocabulary_filter)
+        resource_name = 'waterallocationtype'   
           
           
 class WaterSourceTypeResource(ModelRdfResource):
@@ -290,6 +308,8 @@ class WaterSourceTypeResource(ModelRdfResource):
 v1_api = Api(api_name='v1')
 
 v1_api.register(AggregationStatisticResource())
+v1_api.register(CoordinateMethodResource())
+
 v1_api.register(CropTypeResource())
 
 v1_api.register(UnitsResource())
@@ -311,6 +331,8 @@ v1_api.register(RegulatoryStatusResource())
 v1_api.register(ReportYearResource())
 
 v1_api.register(ReportYearTypeResource())
+v1_api.register(StatesResource())
+
 v1_api.register(SiteTypeResource())
 
 v1_api.register(ReportingUnitTypeResource())
@@ -321,5 +343,5 @@ v1_api.register(VariableResource())
 v1_api.register(WaterAllocationBasisResource())
 v1_api.register(WaterQualityIndicatorResource())
 
-v1_api.register(WaterRightTypeResource())
+v1_api.register(WaterAllocationTypeResource())
 v1_api.register(WaterSourceTypeResource())

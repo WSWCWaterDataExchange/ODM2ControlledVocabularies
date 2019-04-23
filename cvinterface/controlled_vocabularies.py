@@ -23,6 +23,12 @@ vocabularies = {
         'model': AggregationStatistic,
     },
     
+    'coordinatemethod': {
+    'name': CoordinateMethod._meta.verbose_name,
+    'definition': 'A term that indicates the coordinate method used to estimate the longitude and latitude for a site such as GPS, decree',
+    'model': CoordinateMethod,
+    },    
+    
     'croptype': {
     'name': CropType._meta.verbose_name,
     'definition': 'A term that indicates the Crop type for the place of use, if the VariableSpecificCV is SiteSpecificConsumptive Use, Irrigation or SiteSpecificWithdrawal, Irrigation',
@@ -90,6 +96,13 @@ vocabularies = {
         'model': ReportYearType,
     },
     
+    'states': {
+        'name': States._meta.verbose_name,
+        'definition': 'A two digit code for each US state',
+        'model': States,
+    },
+    
+    
     'sitetype': {
         'name': SiteType._meta.verbose_name,
         'definition': 'A term that describes the site type "irrigation field", City',
@@ -132,10 +145,10 @@ vocabularies = {
         'model': WaterQualityIndicator,
     },     
     
-    'waterrighttype': {
-        'name': WaterRightType._meta.verbose_name,
+    'waterallocationtype': {
+        'name': WaterAllocationType._meta.verbose_name,
         'definition': 'A term that describes the water right type in each state such as Federal Reserved Water Right, Temporary Application, Water Company Shares',
-        'model': WaterRightType,
+        'model': WaterAllocationType,
     },     
     
     'watersourcetype': {
@@ -158,7 +171,15 @@ requests = {
         'name': AggregationStatisticRequest._meta.verbose_name,
         'model': AggregationStatisticRequest,
     },
-   'croptyperequest': {
+    
+    'coordinatemethodrequest': {
+    'vocabulary': 'coordinatemethod',
+    'vocabulary_model': CoordinateMethod,
+    'name': CoordinateMethodRequest._meta.verbose_name,
+    'model': CoordinateMethodRequest, 
+     },
+       
+    'croptyperequest': {
     'vocabulary': 'croptype',
     'vocabulary_model': CropType,
     'name': CropTypeRequest._meta.verbose_name,
@@ -238,6 +259,13 @@ requests = {
         'model': ReportYearTypeRequest,
     },
     
+    'statesrequest': {
+        'vocabulary': 'states',
+        'vocabulary_model': States,
+        'name': StatesRequest._meta.verbose_name,
+        'model': StatesRequest,
+    },
+    
     'sitetyperequest': {
         'vocabulary': 'sitetype',
         'vocabulary_model': SiteType,
@@ -282,11 +310,11 @@ requests = {
         'name': WaterQualityIndicatorRequest._meta.verbose_name,
         'model': WaterQualityIndicatorRequest,
     },
-    'waterrighttyperequest': {
-        'vocabulary': 'waterrighttype',
-        'vocabulary_model': WaterRightType,
-        'name': WaterRightTypeRequest._meta.verbose_name,
-        'model': WaterRightTypeRequest,
+    'waterallocationtyperequest': {
+        'vocabulary': 'waterallocationtype',
+        'vocabulary_model': WaterAllocationType,
+        'name': WaterAllocationTypeRequest._meta.verbose_name,
+        'model': WaterAllocationTypeRequest,
     },
     'watersourcetyperequest': {
         'vocabulary': 'watersourcetype',

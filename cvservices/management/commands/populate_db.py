@@ -1,14 +1,15 @@
 import xlrd
 from django.db import IntegrityError
 from django.core.management.base import BaseCommand, CommandError
-from cvservices.models import AggregationStatistic, CropType, EPSGCode,GNISFeatureName, IrrigationMethod, \
+from cvservices.models import AggregationStatistic, CoordinateMethod,CropType, EPSGCode,GNISFeatureName, IrrigationMethod, \
  LegalStatus, MethodType, NAICSCode, \
- NHDNetworkStatus, NHDProduct, RegulatoryStatus, ReportingUnitType, ReportYear, ReportYearType, SiteType,\
+ NHDNetworkStatus, NHDProduct, RegulatoryStatus, ReportingUnitType, ReportYear, ReportYearType, SiteType,States,\
  Units, USGSCategory, Variable, VariableSpecific, WaterAllocationBasis, WaterQualityIndicator, \
- WaterRightType, WaterSourceType
+WaterAllocationType, WaterSourceType
 
 models = {
     'AggregationStatistic': AggregationStatistic,
+    'CoordinateMethod':CoordinateMethod,
     'CropType': CropType,
     'EPSGCode': EPSGCode,
     'GNISFeatureName': GNISFeatureName,
@@ -22,6 +23,7 @@ models = {
     'ReportingUnitType': ReportingUnitType,
     'ReportYear': ReportYear,
     'ReportYearType': ReportYearType,
+    'States':States,
     'SiteType': SiteType,
     'Units': Units,
     'USGSCategory': USGSCategory,
@@ -29,7 +31,7 @@ models = {
     'VariableSpecific': VariableSpecific,
     'WaterAllocationBasis': WaterAllocationBasis,
     'WaterQualityIndicator': WaterQualityIndicator,
-    'WaterRightType': WaterRightType,
+    'WaterAllocationType': WaterAllocationType,
     'WaterSourceType': WaterSourceType
 }
 

@@ -99,6 +99,18 @@ class AggregationStatisticRequest(ControlledVocabularyRequest):
         verbose_name = 'Aggregation Statistic Request'
 
         
+class CoordinateMethod(ControlledVocabulary):
+    class Meta:
+        db_table = 'coordinatemethodcv'
+        verbose_name = 'Coordinate Method'
+        ordering = ["name"]        
+        
+
+class CoordinateMethodRequest(ControlledVocabularyRequest):
+    class Meta:
+        db_table = 'coordinatemethodrequests'
+        verbose_name = 'Coordinate Method Request' 
+        
         
 class CropType(ControlledVocabulary):
     class Meta:
@@ -275,7 +287,16 @@ class SiteTypeRequest(ControlledVocabularyRequest):
         db_table = 'sitetyperequests'
         verbose_name = 'Site Type Request'         
         
-    
+class States(ControlledVocabulary):
+    class Meta:
+        db_table = 'statescv'
+        verbose_name = 'States'
+ 
+
+class StatesRequest(ControlledVocabularyRequest):
+    class Meta:
+        db_table = 'statesrequests'
+        verbose_name = 'states Request'     
     
 class Units(ControlledVocabulary):
     class Meta:
@@ -356,18 +377,18 @@ class WaterQualityIndicatorRequest(ControlledVocabularyRequest):
 
         
         
-class WaterRightType(ControlledVocabulary):
+class WaterAllocationType(ControlledVocabulary):
     class Meta:
-        db_table = 'waterrighttypecv'
-        verbose_name = 'Water Right Type'
+        db_table = 'waterallocationtypecv'
+        verbose_name = 'Water Allocation Type'
 
         
         
 
-class WaterRightTypeRequest(ControlledVocabularyRequest):
+class WaterAllocationTypeRequest(ControlledVocabularyRequest):
     class Meta:
-        db_table = 'waterrighttyperequests'
-        verbose_name = 'Water Right Type Request'             
+        db_table = 'waterallocationtyperequests'
+        verbose_name = 'Water Allocation Type Request'             
         
 
         

@@ -1,8 +1,8 @@
 from django.core.management.base import BaseCommand, CommandError
-from cvservices.models import AggregationStatistic, CropType, EPSGCode, GNISFeatureName, IrrigationMethod, \
+from cvservices.models import AggregationStatistic,CoordinateMethod, CropType, EPSGCode, GNISFeatureName, IrrigationMethod, \
  LegalStatus, MethodType, NAICSCode, \
- NHDNetworkStatus, NHDProduct	,RegulatoryStatus, ReportingUnitType, ReportYear	, ReportYearType	,SiteType,Units	,\
-USGSCategory	,Variable	,VariableSpecific	,WaterAllocationBasis	,WaterQualityIndicator	,WaterRightType	,WaterSourceType	
+ NHDNetworkStatus, NHDProduct	,RegulatoryStatus, ReportingUnitType, ReportYear	, ReportYearType	,States,SiteType,Units	,\
+USGSCategory	,Variable	,VariableSpecific	,WaterAllocationBasis	,WaterQualityIndicator	,WaterAllocationType	,WaterSourceType	
 
 class Command(BaseCommand):
     help = 'Deletes every object in the database'
@@ -14,7 +14,11 @@ class Command(BaseCommand):
 
         for object in AggregationStatistic.objects.all():
             object.delete()
-
+        
+        for object in CoordinateMethod.objects.all():
+            object.delete()
+       
+        
         for object in CropType.objects.all():
             object.delete()
   
@@ -53,7 +57,13 @@ class Command(BaseCommand):
 
         for object in ReportYearType.objects.all():
             object.delete()
-   
+ 
+        for object in SiteType.objects.all():
+            object.delete()
+ 
+        for object in States.objects.all():
+            object.delete()    
+    
         for object in Units.objects.all():
             object.delete()
    
@@ -72,7 +82,7 @@ class Command(BaseCommand):
         for object in WaterQualityIndicator.objects.all():
             object.delete()         
 
-        for object in WaterRightType.objects.all():
+        for object in WaterAllocationType.objects.all():
             object.delete()     
           
         for object in WaterSourceType.objects.all():
