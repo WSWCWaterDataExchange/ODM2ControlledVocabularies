@@ -1,8 +1,11 @@
 from django.core.management.base import BaseCommand, CommandError
-from cvservices.models import AggregationStatistic,CoordinateMethod, CropType, EPSGCode, GNISFeatureName, IrrigationMethod, \
+from cvservices.models import AggregationStatistic,ApplicableResourceType,CoordinateMethod, \
+CropType, DataQualityValue,EPSGCode, GNISFeatureName, IrrigationMethod, \
  LegalStatus, MethodType, NAICSCode, \
- NHDNetworkStatus, NHDProduct	,RegulatoryStatus, ReportingUnitType, ReportYear	, ReportYearType	,States,SiteType,Units	,\
-USGSCategory	,Variable	,VariableSpecific	,WaterAllocationBasis	,WaterQualityIndicator	,WaterAllocationType	,WaterSourceType	
+ NHDNetworkStatus, NHDProduct	,RegulatoryStatus, ReportingUnitType, ReportYear,\
+ReportYearType,States,SiteType,Units	,\
+USGSCategory	,Variable	,VariableSpecific	,WaterAllocationBasis	,WaterQualityIndicator	,\
+WaterAllocationType	,WaterSourceType	
 
 class Command(BaseCommand):
     help = 'Deletes every object in the database'
@@ -14,7 +17,10 @@ class Command(BaseCommand):
 
         for object in AggregationStatistic.objects.all():
             object.delete()
-        
+
+        for object in ApplicableResourceType.objects.all():
+            object.delete()        
+
         for object in CoordinateMethod.objects.all():
             object.delete()
        
@@ -22,9 +28,12 @@ class Command(BaseCommand):
         for object in CropType.objects.all():
             object.delete()
   
-        for object in EPSGCode.objects.all():
+        for object in DataQualityValue.objects.all():
             object.delete()
-
+        
+	for object in EPSGCode.objects.all():
+            object.delete()
+			
         for object in GNISFeatureName.objects.all():
             object.delete()
 

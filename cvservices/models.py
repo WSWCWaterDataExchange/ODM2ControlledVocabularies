@@ -99,6 +99,20 @@ class AggregationStatisticRequest(ControlledVocabularyRequest):
         verbose_name = 'Aggregation Statistic Request'
 
         
+class ApplicableResourceType(ControlledVocabulary):
+    class Meta:
+        db_table = 'applicableresourcetype'
+        verbose_name = 'Applicable Resource Type'
+        ordering = ["name"]        
+        
+
+class ApplicableResourceTypeRequest(ControlledVocabularyRequest):
+    class Meta:
+        db_table = 'applicableresourcetyperequests'
+        verbose_name = 'Applicable Resource Type Request' 
+
+
+
 class CoordinateMethod(ControlledVocabulary):
     class Meta:
         db_table = 'coordinatemethodcv'
@@ -124,7 +138,17 @@ class CropTypeRequest(ControlledVocabularyRequest):
         db_table = 'croptyperequests'
         verbose_name = 'Crop Type Request'        
         
-        
+
+class DataQualityValue(ControlledVocabulary):
+    class Meta:
+        db_table = 'dataqualityvaluecv'
+        verbose_name = 'Data Quality Value'
+
+
+class DataQualityValueRequest(ControlledVocabularyRequest):
+    class Meta:
+        db_table = 'dataqualityvaluerequests'
+        verbose_name = 'Data Quality Value Request'        
         
 
 class EPSGCode(ControlledVocabulary):

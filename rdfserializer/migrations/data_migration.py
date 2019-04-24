@@ -90,13 +90,19 @@ def forwards(apps, schema_editor):
 
     scheme.objects.using(db_alias).bulk_create([
         scheme(name='aggregationStatistic', title='Wade Aggregation Statistic Controlled Vocabulary',
-               creator='WAMDAM1 Working Group',
+               creator='WaDE Working Group',
                description='A vocabulary for describing the calculated statistic associated with recorded observations.'
                            ' The aggregation statistic is calculated over the time aggregation interval associated '
                            'with the recorded observation. ',
                uri='http://vocabulary.westernstateswater.org/aggregationstatistic'
                ),
         
+        scheme(name='applicableResourcetype', title='WaDE applicableResourcetype', creator='WaDE Working Group',
+               description='A term that indicates the types of water supply or water use for which the method is used (e.g. surface water, groundwater, storage, consumptive use, withdrawal)	',
+               uri='http://vocabulary.westernstateswater.org/applicableresourcetype'
+               ),
+
+
         scheme(name='coordinateMethod', title='WaDE coordinateMethod', creator='WaDE Working Group',
                description='A term that indicates coordinate method used to report the longitude and latitude of a site',
                uri='http://vocabulary.westernstateswater.org/coordinatemethod'
@@ -109,7 +115,12 @@ def forwards(apps, schema_editor):
                uri='http://vocabulary.westernstateswater.org/croptype'
                ),      
         
-        
+        scheme(name='dataQualityvalue', title='WaDE DataQualityValue Controlled Vocabulary', creator='WADE Working Group',
+               description='A term to indicate the data quality or grading (e.g. fair, good, best, unreported), or using the NEMS data quality grading system.	',    
+               uri='http://vocabulary.westernstateswater.org/dataqualityvalue'
+               ),        
+
+
         scheme(name='epsgCode', title='WaDE MethodType Controlled Vocabulary', creator='WADE Working Group',
                description='A term to indicate the European Petroleum Survey Group (EPSG) Code for projection, with a preference for WGS_1984, EPSG of 4326',    
                uri='http://vocabulary.westernstateswater.org/epsgcode'

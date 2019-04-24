@@ -9,8 +9,7 @@ from tastypie.utils.mime import build_content_type
 
 from rdfserializer.api import ModelRdfResource
 
-from models import AggregationStatistic, CoordinateMethod,MethodType,CropType, EPSGCode, GNISFeatureName, IrrigationMethod, LegalStatus, NAICSCode, \
-     NHDNetworkStatus, NHDProduct, RegulatoryStatus, ReportYear, ReportingUnitType, ReportYearType, SiteType,States,\
+from models import AggregationStatistic, ApplicableResourceType,CoordinateMethod,MethodType,CropType, DataQualityValue,EPSGCode, GNISFeatureName, IrrigationMethod, LegalStatus, NAICSCode, NHDNetworkStatus, NHDProduct, RegulatoryStatus, ReportYear, ReportingUnitType, ReportYearType, SiteType,States,\
      Units,USGSCategory,Variable,VariableSpecific,WaterAllocationBasis,WaterQualityIndicator,WaterAllocationType,WaterSourceType	
 
 
@@ -91,7 +90,15 @@ class AggregationStatisticResource(ModelRdfResource):
         queryset = AggregationStatistic.objects.filter(ModelRdfResource.vocabulary_filter)
         resource_name = 'aggregationstatistic'
 
+
+class ApplicableResourceTypeResource(ModelRdfResource):
+    scheme = 'applicableResourcetype'
+
+    class Meta(ModelRdfResource.Meta):
+        queryset = ApplicableResourceType.objects.filter(ModelRdfResource.vocabulary_filter)
+        resource_name = 'applicableresourcetype'
           
+
 class CoordinateMethodResource(ModelRdfResource):
     scheme = 'coordinateMethod'
 
@@ -107,6 +114,13 @@ class CropTypeResource(ModelRdfResource):
     class Meta(ModelRdfResource.Meta):
         queryset = CropType.objects.filter(ModelRdfResource.vocabulary_filter)
         resource_name = 'croptype'
+
+class DataQualityValueResource(ModelRdfResource):
+    scheme = 'dataQualityvalue'
+
+    class Meta(ModelRdfResource.Meta):
+        queryset = DataQualityValue.objects.filter(ModelRdfResource.vocabulary_filter)
+        resource_name = 'dataqualityvalue'  
 
           
           
@@ -308,12 +322,16 @@ class WaterSourceTypeResource(ModelRdfResource):
 v1_api = Api(api_name='v1')
 
 v1_api.register(AggregationStatisticResource())
-v1_api.register(CoordinateMethodResource())
+v1_api.register(ApplicableResourceTypeResource())
 
+v1_api.register(CoordinateMethodResource())
 v1_api.register(CropTypeResource())
 
 v1_api.register(UnitsResource())
 v1_api.register(VariableSpecificResource())
+
+v1_api.register(DataQualityValueResource())
+
 
 v1_api.register(EPSGCodeResource())
 v1_api.register(GNISFeatureNameResource())

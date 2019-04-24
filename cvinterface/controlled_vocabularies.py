@@ -23,18 +23,30 @@ vocabularies = {
         'model': AggregationStatistic,
     },
     
+    'applicableresourcetype': {
+        'name': ApplicableResourceType._meta.verbose_name,
+	'definition': 'A term that indicates the types of water supply or water use for which the method is used (e.g. surface water, groundwater, storage, consumptive use, withdrawal)',
+	'model': ApplicableResourceType,
+    },     
+
     'coordinatemethod': {
-    'name': CoordinateMethod._meta.verbose_name,
-    'definition': 'A term that indicates the coordinate method used to estimate the longitude and latitude for a site such as GPS, decree',
-    'model': CoordinateMethod,
+	'name': CoordinateMethod._meta.verbose_name,
+	'definition': 'A term that indicates the coordinate method used to estimate the longitude and latitude for a site such as GPS, decree',
+	'model': CoordinateMethod,
     },    
     
     'croptype': {
-    'name': CropType._meta.verbose_name,
-    'definition': 'A term that indicates the Crop type for the place of use, if the VariableSpecificCV is SiteSpecificConsumptive Use, Irrigation or SiteSpecificWithdrawal, Irrigation',
-    'model': CropType,
+	'name': CropType._meta.verbose_name,
+	'definition': 'A term that indicates the Crop type for the place of use, if the VariableSpecificCV is SiteSpecificConsumptive Use, Irrigation or SiteSpecificWithdrawal, Irrigation',
+	'model': CropType,
     },
     
+    'dataqualityvalue': {
+        'name': DataQualityValue._meta.verbose_name,
+        'definition': 'A term to indicate the data quality or grading (e.g. fair, good, best, unreported), or using the NEMS data quality grading system.',
+        'model': DataQualityValue,
+    },
+
     'epsgcode': {
         'name': EPSGCode._meta.verbose_name,
         'definition': 'A term to indicate the European Petroleum Survey Group (EPSG) Code for projection, with a preference for WGS_1984, EPSG of 4326',
@@ -172,20 +184,34 @@ requests = {
         'model': AggregationStatisticRequest,
     },
     
+    'applicableresourcetyperequest': {
+	'vocabulary': 'applicableresourcetype',
+	'vocabulary_model': ApplicableResourceType,
+	'name': ApplicableResourceTypeRequest._meta.verbose_name,
+	'model': ApplicableResourceTypeRequest, 
+     },
+
     'coordinatemethodrequest': {
-    'vocabulary': 'coordinatemethod',
-    'vocabulary_model': CoordinateMethod,
-    'name': CoordinateMethodRequest._meta.verbose_name,
-    'model': CoordinateMethodRequest, 
+	'vocabulary': 'coordinatemethod',
+	'vocabulary_model': CoordinateMethod,
+	'name': CoordinateMethodRequest._meta.verbose_name,
+	'model': CoordinateMethodRequest, 
      },
        
     'croptyperequest': {
-    'vocabulary': 'croptype',
-    'vocabulary_model': CropType,
-    'name': CropTypeRequest._meta.verbose_name,
-    'model': CropTypeRequest, 
+	'vocabulary': 'croptype',
+	'vocabulary_model': CropType,
+	'name': CropTypeRequest._meta.verbose_name,
+	'model': CropTypeRequest, 
      },
-      
+
+    'dataqualityvaluerequest': {
+        'vocabulary': 'dataqualityvalue',
+        'vocabulary_model': DataQualityValue,
+        'name': DataQualityValueRequest._meta.verbose_name,
+        'model': DataQualityValueRequest,
+    },
+
     'epsgcoderequest': {
         'vocabulary': 'epsgcode',
         'vocabulary_model': EPSGCode,
