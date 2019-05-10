@@ -15,10 +15,10 @@ The deployed online moderated registry at http://vocabulary.westernstateswater.o
  
 **a. Install Basic packages/updates on the server**   
 ```
-apt-get update
-apt-get upgrade
-apt install python-pip
-pip install ansible
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt install python-pip
+sudo apt install ansible
 ```
 **b. Clone the GitHub repo into the server**   
 ```
