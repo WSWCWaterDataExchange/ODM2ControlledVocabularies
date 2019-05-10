@@ -29,6 +29,14 @@ vocabularies = {
 	'model': ApplicableResourceType,
     },     
 
+    'beneficialuse': {
+        'name': BeneficialUse._meta.verbose_name,
+	'definition': 'A term that indicates the Beneficial Use of water e.g., for irrigation, domestic use)',
+	'model': BeneficialUse,
+    },
+	
+	
+
     'coordinatemethod': {
 	'name': CoordinateMethod._meta.verbose_name,
 	'definition': 'A term that indicates the coordinate method used to estimate the longitude and latitude for a site such as GPS, decree',
@@ -190,6 +198,18 @@ requests = {
 	'name': ApplicableResourceTypeRequest._meta.verbose_name,
 	'model': ApplicableResourceTypeRequest, 
      },
+
+
+    'beneficialuserequest': {
+	'vocabulary': 'beneficialuse',
+	'vocabulary_model': BeneficialUse,
+	'name': BeneficialUseRequest._meta.verbose_name,
+	'model': BeneficialUseRequest, 
+     },
+
+
+
+
 
     'coordinatemethodrequest': {
 	'vocabulary': 'coordinatemethod',

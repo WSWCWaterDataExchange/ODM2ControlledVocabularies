@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
-from cvservices.models import AggregationStatistic,ApplicableResourceType,CoordinateMethod, \
+
+from cvservices.models import AggregationStatistic,ApplicableResourceType,BeneficialUse,CoordinateMethod, \
 CropType, DataQualityValue,EPSGCode, GNISFeatureName, IrrigationMethod, \
  LegalStatus, MethodType, NAICSCode, \
  NHDNetworkStatus, NHDProduct	,RegulatoryStatus, ReportingUnitType, ReportYear,\
@@ -20,6 +21,10 @@ class Command(BaseCommand):
 
         for object in ApplicableResourceType.objects.all():
             object.delete()        
+
+        for object in BeneficialUse.objects.all():
+            object.delete()  
+
 
         for object in CoordinateMethod.objects.all():
             object.delete()

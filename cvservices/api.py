@@ -9,7 +9,7 @@ from tastypie.utils.mime import build_content_type
 
 from rdfserializer.api import ModelRdfResource
 
-from models import AggregationStatistic, ApplicableResourceType,CoordinateMethod,MethodType,CropType, DataQualityValue,EPSGCode, GNISFeatureName, IrrigationMethod, LegalStatus, NAICSCode, NHDNetworkStatus, NHDProduct, RegulatoryStatus, ReportYear, ReportingUnitType, ReportYearType, SiteType,States,\
+from models import AggregationStatistic, ApplicableResourceType,BeneficialUse,CoordinateMethod,MethodType,CropType, DataQualityValue,EPSGCode, GNISFeatureName, IrrigationMethod, LegalStatus, NAICSCode, NHDNetworkStatus, NHDProduct, RegulatoryStatus, ReportYear, ReportingUnitType, ReportYearType, SiteType,States,\
      Units,USGSCategory,Variable,VariableSpecific,WaterAllocationBasis,WaterQualityIndicator,WaterAllocationType,WaterSourceType	
 
 
@@ -98,6 +98,14 @@ class ApplicableResourceTypeResource(ModelRdfResource):
         queryset = ApplicableResourceType.objects.filter(ModelRdfResource.vocabulary_filter)
         resource_name = 'applicableresourcetype'
           
+
+class BeneficialUseResource(ModelRdfResource):
+    scheme = 'beneficialUse'
+
+    class Meta(ModelRdfResource.Meta):
+        queryset = BeneficialUse.objects.filter(ModelRdfResource.vocabulary_filter)
+        resource_name = 'beneficialuse'
+
 
 class CoordinateMethodResource(ModelRdfResource):
     scheme = 'coordinateMethod'
@@ -323,6 +331,8 @@ v1_api = Api(api_name='v1')
 
 v1_api.register(AggregationStatisticResource())
 v1_api.register(ApplicableResourceTypeResource())
+v1_api.register(BeneficialUseResource())
+
 
 v1_api.register(CoordinateMethodResource())
 v1_api.register(CropTypeResource())

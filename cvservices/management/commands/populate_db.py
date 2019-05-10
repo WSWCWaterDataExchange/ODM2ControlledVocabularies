@@ -1,7 +1,8 @@
 import xlrd
 from django.db import IntegrityError
 from django.core.management.base import BaseCommand, CommandError
-from cvservices.models import AggregationStatistic, ApplicableResourceType,\
+
+from cvservices.models import AggregationStatistic, ApplicableResourceType,BeneficialUse,\
 CoordinateMethod,CropType, DataQualityValue,EPSGCode,GNISFeatureName, IrrigationMethod, \
  LegalStatus, MethodType, NAICSCode, \
  NHDNetworkStatus, NHDProduct, RegulatoryStatus, ReportingUnitType, ReportYear, ReportYearType, SiteType,States,\
@@ -11,6 +12,7 @@ WaterAllocationType, WaterSourceType
 models = {
     'AggregationStatistic': AggregationStatistic,
     'ApplicableResourceType': ApplicableResourceType,
+	'BeneficialUse': BeneficialUse,
 	'CoordinateMethod':CoordinateMethod,
     'CropType': CropType,
     'DataQualityValue' : DataQualityValue,

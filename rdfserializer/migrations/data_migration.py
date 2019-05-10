@@ -26,6 +26,8 @@ def forwards(apps, schema_editor):
         node(name='exactMatch', namespace_id='skos'),
         node(name='category', namespace_id='wade'),
         node(name='state', namespace_id='wade'),
+		node(name='abbreviation', namespace_id='wade'),
+
         node(name='producesResult', namespace_id='wade'),
         node(name='Concept', namespace_id='skos'),
         node(name='inScheme', namespace_id='skos'),
@@ -56,7 +58,12 @@ def forwards(apps, schema_editor):
                        node=node.objects.using(db_alias).get(name='exactMatch', namespace_id='skos')),
         field_relation(field_name='state',
                        node=node.objects.using(db_alias).get(name='state', namespace_id='wade')),
-        field_relation(field_name='category',
+        
+        field_relation(field_name='abbreviation',
+                       node=node.objects.using(db_alias).get(name='abbreviation', namespace_id='wade')),		
+		
+		
+		field_relation(field_name='category',
                        node=node.objects.using(db_alias).get(name='category', namespace_id='wade')),
         field_relation(field_name='produces_result',
                        node=node.objects.using(db_alias).get(name='producesResult', namespace_id='wade')),
@@ -102,7 +109,13 @@ def forwards(apps, schema_editor):
                uri='http://vocabulary.westernstateswater.org/applicableresourcetype'
                ),
 
-
+        scheme(name='beneficialUse', title='WaDE beneficialUse', creator='WaDE Working Group',
+               description='A term that indicates the beneficial Use for water',
+               uri='http://vocabulary.westernstateswater.org/beneficialuse'
+               ),
+			   
+			   
+			   
         scheme(name='coordinateMethod', title='WaDE coordinateMethod', creator='WaDE Working Group',
                description='A term that indicates coordinate method used to report the longitude and latitude of a site',
                uri='http://vocabulary.westernstateswater.org/coordinatemethod'
