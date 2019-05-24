@@ -43,6 +43,14 @@ vocabularies = {
 	'model': CoordinateMethod,
     },    
     
+
+    'customertype': {
+	'name': CustomerType._meta.verbose_name,
+	'definition': 'A customer type is a term that specifies the water user type within a public community water supply system such as residential, industrial, commercial,  institutional. If not known, then use "Unspecified", if it is a mix of all uses, then use "Combined" ',
+	'model': CustomerType,
+    }, 
+
+
     'croptype': {
 	'name': CropType._meta.verbose_name,
 	'definition': 'A term that indicates the Crop type for the place of use, if the VariableSpecificCV is SiteSpecificConsumptive Use, Irrigation or SiteSpecificWithdrawal, Irrigation',
@@ -209,8 +217,6 @@ requests = {
 
 
 
-
-
     'coordinatemethodrequest': {
 	'vocabulary': 'coordinatemethod',
 	'vocabulary_model': CoordinateMethod,
@@ -218,6 +224,16 @@ requests = {
 	'model': CoordinateMethodRequest, 
      },
        
+	   
+	   
+    'customertyperequest': {
+	'vocabulary': 'customertype',
+	'vocabulary_model': CustomerType,
+	'name': CustomerTypeRequest._meta.verbose_name,
+	'model': CustomerTypeRequest, 
+     },
+
+
     'croptyperequest': {
 	'vocabulary': 'croptype',
 	'vocabulary_model': CropType,

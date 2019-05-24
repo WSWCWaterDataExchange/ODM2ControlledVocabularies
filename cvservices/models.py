@@ -142,6 +142,20 @@ class CoordinateMethodRequest(ControlledVocabularyRequest):
         db_table = 'coordinatemethodrequests'
         verbose_name = 'Coordinate Method Request' 
         
+
+class CustomerType(ControlledVocabulary):
+    class Meta:
+        db_table = 'customertypecv'
+        verbose_name = 'Customer Type'
+        ordering = ["name"]        
+        
+
+class CustomerTypeRequest(ControlledVocabularyRequest):
+    class Meta:
+        db_table = 'customertyperequests'
+        verbose_name = 'Customer Type Request' 
+
+
         
 class CropType(ControlledVocabulary):
     class Meta:

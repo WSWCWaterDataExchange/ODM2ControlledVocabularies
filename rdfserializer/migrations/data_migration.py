@@ -121,6 +121,15 @@ def forwards(apps, schema_editor):
                uri='http://vocabulary.westernstateswater.org/coordinatemethod'
                ),
         
+
+        scheme(name='customerType', title='WaDE customerType', creator='WaDE Working Group',
+               description='A customer type is a term that specifies the water user type within a public community water supply system such as residential, industrial, commercial,  institutional. If not known, then use "Unspecified", if it is a mix of all uses, then use "Combined" ',
+               uri='http://vocabulary.westernstateswater.org/customertype'
+               ),
+
+
+
+
         
         scheme(name='cropType', title='WaDE Elevation Datum Controlled Vocabulary', creator='WaDE Working Group',
                description='A term that indicates the Crop type for the place of use, if the VariableSpecificCV is SiteSpecificConsumptive Use,'

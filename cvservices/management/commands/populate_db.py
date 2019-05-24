@@ -3,7 +3,7 @@ from django.db import IntegrityError
 from django.core.management.base import BaseCommand, CommandError
 
 from cvservices.models import AggregationStatistic, ApplicableResourceType,BeneficialUse,\
-CoordinateMethod,CropType, DataQualityValue,EPSGCode,GNISFeatureName, IrrigationMethod, \
+CoordinateMethod,CustomerType,CropType, DataQualityValue,EPSGCode,GNISFeatureName, IrrigationMethod, \
  LegalStatus, MethodType, NAICSCode, \
  NHDNetworkStatus, NHDProduct, RegulatoryStatus, ReportingUnitType, ReportYear, ReportYearType, SiteType,States,\
  Units, USGSCategory, Variable, VariableSpecific, WaterAllocationBasis, WaterQualityIndicator, \
@@ -14,6 +14,7 @@ models = {
     'ApplicableResourceType': ApplicableResourceType,
 	'BeneficialUse': BeneficialUse,
 	'CoordinateMethod':CoordinateMethod,
+    'CustomerType': CustomerType,
     'CropType': CropType,
     'DataQualityValue' : DataQualityValue,
 	'EPSGCode': EPSGCode,
