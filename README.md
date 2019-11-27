@@ -17,6 +17,7 @@ The deployed online moderated registry at http://vocabulary.westernstateswater.o
 ```
 sudo apt-get update
 sudo apt-get upgrade
+sudo dpkg --configure -a
 sudo apt install python-pip
 sudo apt install ansible
 ```
