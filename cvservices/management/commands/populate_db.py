@@ -2,22 +2,21 @@ import xlrd
 from django.db import IntegrityError
 from django.core.management.base import BaseCommand, CommandError
 
-from cvservices.models import AggregationStatistic, ApplicableResourceType,BeneficialUse,\
+from cvservices.models import AggregationStatistic, ApplicableResourceType,BeneficialUseCategory,\
 CoordinateMethod,CustomerType,CropType, DataQualityValue,EPSGCode,GNISFeatureName, IrrigationMethod, \
- LegalStatus, MethodType, NAICSCode, \
- NHDNetworkStatus, NHDProduct, RegulatoryStatus, ReportingUnitType, ReportYear, ReportYearType, SiteType,States,\
- Units, USGSCategory, Variable, VariableSpecific, WaterAllocationBasis, WaterQualityIndicator, \
-WaterAllocationType, WaterSourceType
+ LegalStatus, MethodType, NAICSCode, PowerType, NHDNetworkStatus, NHDProduct, RegulatoryStatus, RegulatoryOverlayType,\
+ ReportingUnitType, ReportYear, ReportYearType, SDWISIdentifier,SiteType,States,\
+ Units, USGSCategory, Variable, VariableSpecific, WaterAllocationBasis, WaterQualityIndicator, WaterAllocationType, WaterSourceType
 
 models = {
     'AggregationStatistic': AggregationStatistic,
     'ApplicableResourceType': ApplicableResourceType,
-	'BeneficialUse': BeneficialUse,
-	'CoordinateMethod':CoordinateMethod,
+    'BeneficialUseCategory': BeneficialUseCategory,
+    'CoordinateMethod':CoordinateMethod,
     'CustomerType': CustomerType,
     'CropType': CropType,
     'DataQualityValue' : DataQualityValue,
-	'EPSGCode': EPSGCode,
+    'EPSGCode': EPSGCode,
     'GNISFeatureName': GNISFeatureName,
     'IrrigationMethod': IrrigationMethod,
     'LegalStatus': LegalStatus,
@@ -25,10 +24,13 @@ models = {
     'NAICSCode': NAICSCode,
     'NHDNetworkStatus': NHDNetworkStatus,
     'NHDProduct': NHDProduct,
+    'PowerType': PowerType,
     'RegulatoryStatus': RegulatoryStatus,
+    'RegulatoryOverlayType': RegulatoryOverlayType,
     'ReportingUnitType': ReportingUnitType,
     'ReportYear': ReportYear,
     'ReportYearType': ReportYearType,
+    'SDWISIdentifier':SDWISIdentifier,
     'States':States,
     'SiteType': SiteType,
     'Units': Units,
@@ -58,7 +60,7 @@ class Command(BaseCommand):
             raise CommandError(e)
 
         for sheet in wb.sheets():
-
+	    print models[sheet.name]
             # Just get row names
             col_names = []
             for row in range(sheet.nrows):
@@ -86,8 +88,9 @@ class Command(BaseCommand):
                 kwargs = dict(zip(col_names, col_values))
 
                 obj = models[sheet.name].objects.filter(term=kwargs['term']).first()
-
-                if not obj:
+# 		print models[sheet.name]
+                
+		if not obj:
                     obj = models[sheet.name](**kwargs)
                     obj.save()
                 else:

@@ -26,8 +26,8 @@ def forwards(apps, schema_editor):
         node(name='exactMatch', namespace_id='skos'),
         node(name='category', namespace_id='wade'),
         node(name='state', namespace_id='wade'),
-		node(name='abbreviation', namespace_id='wade'),
-
+	node(name='wadename', namespace_id='wade'),
+	node(name='abbreviation', namespace_id='wade'),
         node(name='producesResult', namespace_id='wade'),
         node(name='Concept', namespace_id='skos'),
         node(name='inScheme', namespace_id='skos'),
@@ -58,7 +58,8 @@ def forwards(apps, schema_editor):
                        node=node.objects.using(db_alias).get(name='exactMatch', namespace_id='skos')),
         field_relation(field_name='state',
                        node=node.objects.using(db_alias).get(name='state', namespace_id='wade')),
-        
+        field_relation(field_name='wadename',
+                       node=node.objects.using(db_alias).get(name='wadename', namespace_id='wade')),        
         field_relation(field_name='abbreviation',
                        node=node.objects.using(db_alias).get(name='abbreviation', namespace_id='wade')),		
 		
@@ -109,7 +110,7 @@ def forwards(apps, schema_editor):
                uri='http://vocabulary.westernstateswater.org/applicableresourcetype'
                ),
 
-        scheme(name='beneficialUse', title='WaDE beneficialUse', creator='WaDE Working Group',
+        scheme(name='beneficialUsecategory', title='WaDE beneficialUse', creator='WaDE Working Group',
                description='A term that indicates the beneficial Use for water',
                uri='http://vocabulary.westernstateswater.org/beneficialuse'
                ),
@@ -126,8 +127,6 @@ def forwards(apps, schema_editor):
                description='A customer type is a term that specifies the water user type within a public community water supply system such as residential, industrial, commercial,  institutional. If not known, then use "Unspecified", if it is a mix of all uses, then use "Combined" ',
                uri='http://vocabulary.westernstateswater.org/customertype'
                ),
-
-
 
 
         
@@ -186,6 +185,19 @@ def forwards(apps, schema_editor):
                uri='http://vocabulary.westernstateswater.org/nhdproduct'
                ),
         
+        scheme(name='powerType', title='WaDE Season Name Vocabulary', creator='WaDE Working Group',
+               description='powerType',
+               uri='http://vocabulary.westernstateswater.org/powertype'
+               ),	    
+	    
+        
+        
+        scheme(name='regulatoryoverlayType', title='WaDE Instance Name Controlled Vocabulary', creator='WaDE Working Group',
+               description='A term to indicate the Overlay Type such as federal, state, tribal)',
+               uri='http://vocabulary.westernstateswater.org/regulatoryOverlayType'
+               ),
+
+
         scheme(name='regulatoryStatus', title='WaDE Instance Name Controlled Vocabulary', creator='WaDE Working Group',
                description='A term to indicate the status of the regulation (i.e., whether it is currently initiated/in effect)',
                uri='http://vocabulary.westernstateswater.org/regulatorystatus'
@@ -206,7 +218,14 @@ def forwards(apps, schema_editor):
                description='A term that describes the annual reporting period for this datatype. Could be a "water year," "irrigation year," a calendar year, or other variant. "Utah".',
                uri='http://vocabulary.westernstateswater.org/reportyeartype'
                ), 
-        
+	    
+	    
+        scheme(name='sdwisIdentifier', title='WaDE Text Controlled Value Controlled Vocabulary', creator='WaDE Working Group',
+               description='Safe Drinking Water Information System (SDWIS) Federal Reporting Services https://www.epa.gov/ground-water-and-drinking-water/safe-drinking-water-information-system-sdwis-federal-reporting',
+               uri='http://vocabulary.westernstateswater.org/sdwisidentifier'
+               ), 
+	   
+	    
         scheme(name='siteType', title='WaDE Text Controlled Value Controlled Vocabulary', creator='WaDE Working Group',
                description='A term that describes the site type',
                uri='http://vocabulary.westernstateswater.org/sitetype'

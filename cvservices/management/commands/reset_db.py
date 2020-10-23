@@ -1,10 +1,10 @@
 from django.core.management.base import BaseCommand, CommandError
 
-from cvservices.models import AggregationStatistic,ApplicableResourceType,BeneficialUse,CoordinateMethod,CustomerType, \
+from cvservices.models import AggregationStatistic,ApplicableResourceType,BeneficialUseCategory,CoordinateMethod,CustomerType, \
 CropType, DataQualityValue,EPSGCode, GNISFeatureName, IrrigationMethod, \
  LegalStatus, MethodType, NAICSCode, \
- NHDNetworkStatus, NHDProduct	,RegulatoryStatus, ReportingUnitType, ReportYear,\
-ReportYearType,States,SiteType,Units	,\
+ NHDNetworkStatus, NHDProduct	,PowerType,RegulatoryStatus, RegulatoryOverlayType,ReportingUnitType, ReportYear,\
+ReportYearType,SDWISIdentifier,States,SiteType,Units	,\
 USGSCategory	,Variable	,VariableSpecific	,WaterAllocationBasis	,WaterQualityIndicator	,\
 WaterAllocationType	,WaterSourceType	
 
@@ -22,7 +22,7 @@ class Command(BaseCommand):
         for object in ApplicableResourceType.objects.all():
             object.delete()        
 
-        for object in BeneficialUse.objects.all():
+        for object in BeneficialUseCategory.objects.all():
             object.delete()  
 
 
@@ -38,7 +38,7 @@ class Command(BaseCommand):
         for object in DataQualityValue.objects.all():
             object.delete()
         
-		for object in EPSGCode.objects.all():
+	for object in EPSGCode.objects.all():
             object.delete()
 			
         for object in GNISFeatureName.objects.all():
@@ -62,7 +62,13 @@ class Command(BaseCommand):
         for object in NHDProduct.objects.all():
             object.delete()
 
-        for object in RegulatoryStatus.objects.all():
+        for object in PowerType.objects.all():
+            object.delete()
+	
+	for object in RegulatoryOverlayType.objects.all():
+            object.delete()
+            
+	for object in RegulatoryStatus.objects.all():
             object.delete()
 
         for object in ReportingUnitType.objects.all():
@@ -74,7 +80,10 @@ class Command(BaseCommand):
         for object in ReportYearType.objects.all():
             object.delete()
  
-        for object in SiteType.objects.all():
+        for object in SDWISIdentifier.objects.all():
+            object.delete()
+	
+	for object in SiteType.objects.all():
             object.delete()
  
         for object in States.objects.all():

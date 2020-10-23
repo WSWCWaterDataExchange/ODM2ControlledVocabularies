@@ -29,10 +29,10 @@ vocabularies = {
 	'model': ApplicableResourceType,
     },     
 
-    'beneficialuse': {
-        'name': BeneficialUse._meta.verbose_name,
+    'beneficialusecategory': {
+        'name': BeneficialUseCategory._meta.verbose_name,
 	'definition': 'A term that indicates the Beneficial Use of water e.g., for irrigation, domestic use)',
-	'model': BeneficialUse,
+	'model': BeneficialUseCategory,
     },
 	
 	
@@ -103,6 +103,18 @@ vocabularies = {
         'definition': 'A term that indicates the National Hydrography Dataset (NHD) Product that is used for the indexing. Should be NHDPlus V1, NHDPlus V2, NHD Med Res, or NHD High Res.',
         'model': NHDProduct,
     },
+	
+    'powertype': {
+        'name': PowerType._meta.verbose_name,
+        'definition': 'PowerType',
+        'model': PowerType,
+    },	
+	
+    'regulatoryoverlaytype': {
+        'name': RegulatoryOverlayType._meta.verbose_name,
+        'definition': 'A term to indicate the Regulatory Overlay Type (i.e., federal, state, tribal)',
+        'model': RegulatoryOverlayType,
+    },
     'regulatorystatus': {
         'name': RegulatoryStatus._meta.verbose_name,
         'definition': 'A term to indicate the status of the regulation (i.e., whether it is currently initiated/in effect)',
@@ -136,7 +148,14 @@ vocabularies = {
         'definition': 'A term that describes the site type "irrigation field", City',
         'model': SiteType,
     },
-    
+
+	
+    'sdwisidentifier': {
+        'name': SDWISIdentifier._meta.verbose_name,
+        'definition': 'Safe Drinking Water Information System (SDWIS) Federal Reporting Services https://www.epa.gov/ground-water-and-drinking-water/safe-drinking-water-information-system-sdwis-federal-reporting',
+        'model': SDWISIdentifier,
+    },	
+	
     'units': {
         'name': Units._meta.verbose_name,
         'definition': 'A term that describes the unit of the amount',
@@ -208,11 +227,11 @@ requests = {
      },
 
 
-    'beneficialuserequest': {
-	'vocabulary': 'beneficialuse',
-	'vocabulary_model': BeneficialUse,
-	'name': BeneficialUseRequest._meta.verbose_name,
-	'model': BeneficialUseRequest, 
+    'beneficialusecategoryrequest': {
+	'vocabulary': 'beneficialusecategory',
+	'vocabulary_model': BeneficialUseCategory,
+	'name': BeneficialUseCategoryRequest._meta.verbose_name,
+	'model': BeneficialUseCategoryRequest, 
      },
 
 
@@ -296,6 +315,19 @@ requests = {
         'name': NHDProductRequest._meta.verbose_name,
         'model': NHDProductRequest,
     },
+	
+    'powertyperequest': {
+        'vocabulary': 'powertype',
+        'vocabulary_model': PowerType,
+        'name': PowerTypeRequest._meta.verbose_name,
+        'model': PowerTypeRequest,
+    },	
+    'regulatoryoverlaytyperequest': {
+        'vocabulary': 'regulatoryoverlaytype',
+        'vocabulary_model': RegulatoryOverlayType,
+        'name': RegulatoryOverlayTypeRequest._meta.verbose_name,
+        'model': RegulatoryOverlayTypeRequest,
+    }, 
     'regulatorystatusrequest': {
         'vocabulary': 'regulatorystatus',
         'vocabulary_model': RegulatoryStatus,
@@ -321,6 +353,14 @@ requests = {
         'model': ReportYearTypeRequest,
     },
     
+	
+    'sdwisidentifierrequest': {
+        'vocabulary': 'sdwisidentifier',
+        'vocabulary_model': SDWISIdentifier,
+        'name': SDWISIdentifierRequest._meta.verbose_name,
+        'model': SDWISIdentifierRequest,
+    },
+	
     'statesrequest': {
         'vocabulary': 'states',
         'vocabulary_model': States,

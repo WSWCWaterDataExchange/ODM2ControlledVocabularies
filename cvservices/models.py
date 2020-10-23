@@ -17,9 +17,9 @@ class ControlledVocabulary(models.Model):
     vocabulary_id = models.AutoField(primary_key=True)
     term = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
-    state = models.CharField(max_length=255, blank=True)
+    wadename = models.CharField(max_length=255)
+    state = models.CharField(max_length=255)
     abbreviation = models.CharField(max_length=255, blank=True)
-
     definition = models.TextField()
     category = models.CharField(max_length=255, blank=True)
     provenance = models.TextField(blank=True)
@@ -64,9 +64,9 @@ class ControlledVocabularyRequest(models.Model):
 
     term = models.CharField(max_length=255, help_text="Please enter a URI-friendly version of your term with no spaces, special characters, etc.")
     name = models.CharField(max_length=255, help_text="Please enter the term as you would expect it to appear in a sentence.")
-    state = models.CharField(max_length=255, blank=True, help_text="Please enter a state (or All) for the term.")  
-    abbreviation = models.CharField(max_length=255, blank=False, help_text="Please enter an Abbreviation for the term.")
-
+    wadename = models.CharField(max_length=255, help_text="Please enter the WaDE term that closely maps to the state term.")
+    state = models.CharField(max_length=255, help_text="Please enter a state (or All) for the term.")
+    abbreviation = models.CharField(max_length=255, blank=True, help_text="Please enter an Abbreviation for the term.")
     definition = models.TextField(help_text="Please enter a detailed definition of the term.", blank=True)
     provenance = models.TextField(blank=True, help_text="Enter a note about where the term came from. If you retrieved the definition of the term from a website or other source, note that here.")
     provenance_uri = models.URLField(db_column='provenanceUri', blank=True, max_length=1024, help_text="If you retrieved the term from another formal vocabulary system, enter the URI of the term from the other system here.")
@@ -104,7 +104,7 @@ class AggregationStatisticRequest(ControlledVocabularyRequest):
         
 class ApplicableResourceType(ControlledVocabulary):
     class Meta:
-        db_table = 'applicableresourcetype'
+        db_table = 'applicableresourcetypecv'
         verbose_name = 'Applicable Resource Type'
         ordering = ["name"]        
         
@@ -115,20 +115,27 @@ class ApplicableResourceTypeRequest(ControlledVocabularyRequest):
         verbose_name = 'Applicable Resource Type Request' 
 
 
-class BeneficialUse(ControlledVocabulary):
+class BeneficialUseCategory(ControlledVocabulary):
+    usgscategorycv = models.CharField(max_length=255, blank=True, null=True, db_column='USGSCategoryCV',
+        help_text='Please enter the USGSCategoryCV that coresponds to your BeneficialUseCategory')
+    naicscodecv = models.CharField(max_length=255, blank=True, null=True, db_column='NAICSCodeCV',
+        help_text='Please enter the NAICSCodeCV that coresponds to your BeneficialUseCategory')
     class Meta:
-        db_table = 'beneficialuse'
-        verbose_name = 'Beneficial Use'
+        db_table = 'beneficialusecategorycv'
+        verbose_name = 'Beneficial Use Category'
         ordering = ["name"]        
         
-
-class BeneficialUseRequest(ControlledVocabularyRequest):
+	
+class BeneficialUseCategoryRequest(ControlledVocabularyRequest):
+    usgscategorycv = models.CharField(max_length=255, blank=True, null=True, db_column='USGSCategoryCV',
+        help_text='Please enter the USGSCategoryCV that coresponds to your BeneficialUseCategory')
+    naicscodecv = models.CharField(max_length=255, blank=True, null=True, db_column='NAICSCodeCV',
+        	help_text='Please enter the NAICSCodeCV that coresponds to your BeneficialUseCategory')	
+    
     class Meta:
-        db_table = 'beneficialuserequests'
-        verbose_name = 'Beneficial Use Type Request' 
+        db_table = 'beneficialusecategoryrequests'
+        verbose_name = 'Beneficial Use Category Request' 
 		
-		
-
 
 class CoordinateMethod(ControlledVocabulary):
     class Meta:
@@ -278,6 +285,31 @@ class NHDProductRequest(ControlledVocabularyRequest):
         db_table = 'nhdproductrequests'
         verbose_name = 'NHD Product Request'
 
+	
+	
+class PowerType(ControlledVocabulary):
+    class Meta:
+        db_table = 'powertypecv'
+        verbose_name = 'PowerType'
+
+
+class PowerTypeRequest(ControlledVocabularyRequest):
+    class Meta:
+        db_table = 'powertyperequests'
+        verbose_name = 'PowerType Request'
+	
+	
+class RegulatoryOverlayType(ControlledVocabulary):
+    class Meta:
+        db_table = 'regulatoryoverlaytypecv'
+        verbose_name = 'Regulatory Overlay Type'
+
+
+class RegulatoryOverlayTypeRequest(ControlledVocabularyRequest):
+    class Meta:
+        db_table = 'regulatoryoverlaytyperequests'
+        verbose_name = 'Regulatory Overlay Type Request'
+
 
 class RegulatoryStatus(ControlledVocabulary):
     class Meta:
@@ -329,7 +361,23 @@ class ReportYearTypeRequest(ControlledVocabularyRequest):
         verbose_name = 'Report Year Request'           
   
 
-        
+       
+	
+class SDWISIdentifier(ControlledVocabulary):
+    class Meta:
+        db_table = 'sdwisidentifiercv'
+        verbose_name = 'SDWISIdentifier'
+ 
+
+
+class SDWISIdentifierRequest(ControlledVocabularyRequest):
+    class Meta:
+        db_table = 'sdwisidentifierrequests'
+        verbose_name = 'SDWISIdentifier Request'
+	
+
+	
+	
 class SiteType(ControlledVocabulary):
     class Meta:
         db_table = 'sitetypecv'
@@ -390,8 +438,6 @@ class VariableRequest(ControlledVocabularyRequest):
     class Meta:
         db_table = 'variablerequests'
         verbose_name = 'Variable Request'                 
-
-        
         
         
         

@@ -9,8 +9,10 @@ from tastypie.utils.mime import build_content_type
 
 from rdfserializer.api import ModelRdfResource
 
-from models import AggregationStatistic, ApplicableResourceType,BeneficialUse,CoordinateMethod,CustomerType,MethodType,CropType, DataQualityValue,EPSGCode, GNISFeatureName, IrrigationMethod, LegalStatus, NAICSCode, NHDNetworkStatus, NHDProduct, RegulatoryStatus, ReportYear, ReportingUnitType, ReportYearType, SiteType,States,\
-     Units,USGSCategory,Variable,VariableSpecific,WaterAllocationBasis,WaterQualityIndicator,WaterAllocationType,WaterSourceType	
+from models import AggregationStatistic, ApplicableResourceType,BeneficialUseCategory,CoordinateMethod,CustomerType,MethodType, \
+CropType, DataQualityValue,EPSGCode, GNISFeatureName, IrrigationMethod, LegalStatus, NAICSCode, NHDNetworkStatus, NHDProduct, \
+PowerType,RegulatoryOverlayType,RegulatoryStatus, ReportYear, ReportingUnitType, ReportYearType,SDWISIdentifier, SiteType,States,\
+Units,USGSCategory,Variable,VariableSpecific,WaterAllocationBasis,WaterQualityIndicator,WaterAllocationType,WaterSourceType	
 
 
 class CSVSerializer(Serializer):
@@ -99,12 +101,12 @@ class ApplicableResourceTypeResource(ModelRdfResource):
         resource_name = 'applicableresourcetype'
           
 
-class BeneficialUseResource(ModelRdfResource):
-    scheme = 'beneficialUse'
+class BeneficialUseCategoryResource(ModelRdfResource):
+    scheme = 'beneficialUsecategory'
 
     class Meta(ModelRdfResource.Meta):
-        queryset = BeneficialUse.objects.filter(ModelRdfResource.vocabulary_filter)
-        resource_name = 'beneficialuse'
+        queryset = BeneficialUseCategory.objects.filter(ModelRdfResource.vocabulary_filter)
+        resource_name = 'beneficialusecategory'
 
 
 class CoordinateMethodResource(ModelRdfResource):
@@ -129,6 +131,7 @@ class CropTypeResource(ModelRdfResource):
         queryset = CropType.objects.filter(ModelRdfResource.vocabulary_filter)
         resource_name = 'croptype'
 
+          
 class DataQualityValueResource(ModelRdfResource):
     scheme = 'dataQualityvalue'
 
@@ -209,6 +212,22 @@ class NHDProductResource(ModelRdfResource):
         resource_name = 'nhdproduct'
 
           
+class PowerTypeResource(ModelRdfResource):
+    scheme = 'powerType'
+
+    class Meta(ModelRdfResource.Meta):
+        queryset = PowerType.objects.filter(ModelRdfResource.vocabulary_filter)
+        resource_name = 'powertype'
+          
+
+class RegulatoryOverlayTypeResource(ModelRdfResource):
+    scheme = 'regulatoryoverlayType'
+
+    class Meta(ModelRdfResource.Meta):
+        queryset = RegulatoryOverlayType.objects.filter(ModelRdfResource.vocabulary_filter)
+        resource_name = 'regulatoryoverlaytype'
+
+
 
 class RegulatoryStatusResource(ModelRdfResource):
     scheme = 'regulatoryStatus'
@@ -246,6 +265,17 @@ class ReportYearTypeResource(ModelRdfResource):
         queryset = ReportYearType.objects.filter(ModelRdfResource.vocabulary_filter)
         resource_name = 'reportyeartype'
 
+          
+          
+class SDWISIdentifierResource(ModelRdfResource):
+    scheme = 'sdwisIdentifier'
+
+    class Meta(ModelRdfResource.Meta):
+        queryset = SDWISIdentifier.objects.filter(ModelRdfResource.vocabulary_filter)
+        resource_name = 'sdwisidentifier'  
+          
+          
+          
 class SiteTypeResource(ModelRdfResource):
     scheme = 'siteType'
 
@@ -338,7 +368,7 @@ v1_api = Api(api_name='v1')
 v1_api.register(AggregationStatisticResource())
 v1_api.register(ApplicableResourceTypeResource())
 
-v1_api.register(BeneficialUseResource())
+v1_api.register(BeneficialUseCategoryResource())
 v1_api.register(CoordinateMethodResource())
 
 v1_api.register(CustomerTypeResource())
@@ -360,12 +390,20 @@ v1_api.register(MethodTypeResource())
 v1_api.register(NAICSCodeResource())
 
 v1_api.register(NHDNetworkStatusResource())
+
 v1_api.register(NHDProductResource())
+v1_api.register(PowerTypeResource())
 
 v1_api.register(RegulatoryStatusResource())
+
+
+v1_api.register(RegulatoryOverlayTypeResource())
 v1_api.register(ReportYearResource())
 
 v1_api.register(ReportYearTypeResource())
+v1_api.register(SDWISIdentifierResource())
+
+
 v1_api.register(StatesResource())
 
 v1_api.register(SiteTypeResource())
